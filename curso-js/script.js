@@ -27,6 +27,9 @@ document.getElementById('gastosForm').addEventListener('submit', function(e) {
     // Mostrar el resultado en la tabla
     mostrarRegistros(registros);
 
+    // Guardar los registros en el localStorage
+    localStorage.setItem('registros', JSON.stringify(registros));
+
     // Mostrar una notificación de registro agregado
     mostrarNotificacion("Nuevo registro agregado: Total de gastos: " + total);
 });
@@ -64,7 +67,17 @@ function mostrarRegistros(registros) {
 }
 
 // Array para almacenar los registros de gastos
-const registros = [];
+let registros = [];
+
+// Recuperar los registros del localStorage al cargar la página
+window.addEventListener('load', function() {
+    const registrosGuardados = localStorage.getItem('registros');
+    
+    if (registrosGuardados) {
+        registros = JSON.parse(registrosGuardados);
+        mostrarRegistros(registros);
+    }
+});
 
 // Event listener para el cambio de opción del filtro
 document.getElementById('filtro').addEventListener('change', function(e) {
@@ -79,7 +92,7 @@ document.getElementById('filtro').addEventListener('change', function(e) {
     }
 });
 
-// Función para filtrar los registros por el campo "Total Gastos"
+/// Función para filtrar los registros por el campo "Total Gastos". En esta parte podría agregar un filtro que me permita filtrar por fecha, por ejemplo, filtrar por mes, por año, etc.. (POSIBLE MEJORA)
 function filtrarRegistrosPorTotal(registros, montoMaximo) {
     return registros.filter(registro => registro.total < montoMaximo);
 }
@@ -88,7 +101,6 @@ function filtrarRegistrosPorTotal(registros, montoMaximo) {
 function mostrarNotificacion(mensaje) {
     const resultadoDiv = document.getElementById('resultado');
     resultadoDiv.textContent = mensaje;
-    
 }
 
 // Event listener para el cambio de opción del filtro
@@ -104,10 +116,6 @@ document.getElementById('filtro').addEventListener('change', function(e) {
     }
 });
 
-// Función para filtrar los registros por el campo "Total Gastos"
-function filtrarRegistrosPorTotal(registros, montoMaximo) {
-    return registros.filter(registro => registro.total < montoMaximo);
-}
-
-// Mostrar todos los registros por defecto
+// Mostrar todos los registros 
 mostrarRegistros(registros);
+
