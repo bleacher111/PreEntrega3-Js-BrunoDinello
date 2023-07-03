@@ -10,18 +10,14 @@ document.getElementById('gastosForm').addEventListener('submit', function(e) {
 
   // Verificar si se ingresaron costos
   if (!alquiler && !comida && !servicios && !transporte) {
-    // Mostrar alerta de SweetAlert
     Swal.fire('Error', 'Debe ingresar al menos un gasto', 'error');
-    return; // Salir de la función para evitar la creación del registro sin costos
+    return; 
   }
 
-  // Crear una instancia de la clase Registro
+  // Crear regisro y agregarlo al array de registros
   const registro = new Registro(new Date(), alquiler, comida, servicios, transporte);
-
-  // Agregar el registro al array de registros
   registros.push(registro);
 
-  // Mostrar el resultado en la tabla
   mostrarRegistros(registros);
 
   // Guardar los registros en el localStorage
@@ -37,10 +33,10 @@ document.getElementById('gastosForm').addEventListener('submit', function(e) {
   document.getElementById('transporte').value = '';
 });
 
-// Función para mostrar los registros en la tabla
+
 function mostrarRegistros(registros) {
   const tbody = document.querySelector('#registrosTable tbody');
-  tbody.innerHTML = ''; // Limpiar el contenido actual de la tabla
+  tbody.innerHTML = ''; 
 
   registros.forEach(registro => {
     const fila = document.createElement('tr');
@@ -90,7 +86,7 @@ function cargarRegistrosDesdeJSON() {
   fetch('./registros.json')
     .then(response => response.json())
     .then(data => {
-      // Mostrar los registros en la tabla de totales del mes
+
       mostrarRegistrosTotales(data);
     })
     .catch(error => {
@@ -101,7 +97,7 @@ function cargarRegistrosDesdeJSON() {
 // Función para mostrar los registros en la tabla de totales del mes
 function mostrarRegistrosTotales(registros) {
   const tbody = document.querySelector('#totalMesTable tbody');
-  tbody.innerHTML = ''; // Limpiar el contenido actual de la tabla
+  tbody.innerHTML = '';
 
   registros.forEach(registro => {
     const fila = document.createElement('tr');
@@ -129,7 +125,7 @@ function mostrarRegistrosTotales(registros) {
     tbody.appendChild(fila);
   });
 }
-// Event listener para el cambio de opción del filtro
+// Filtro
 document.getElementById('filtro').addEventListener('change', function(e) {
   const opcionSeleccionada = e.target.value;
 
