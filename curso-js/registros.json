@@ -1,0 +1,50 @@
+[
+  {
+    "mes": "Enero",
+    "alquiler": 1100,
+    "comida": 500,
+    "servicios": 200,
+    "transporte": 300,
+    "total": 2100
+  },
+  {
+    "mes": "Febrero",
+    "alquiler": 1100,
+    "comida": 550,
+    "servicios": 250,
+    "transporte": 350,
+    "total": 2250
+  },
+  {
+    "mes": "Marzo",
+    "alquiler": 1100,
+    "comida": 1550,
+    "servicios": 2250,
+    "transporte": 50,
+    "total": 4990
+  },
+  {
+    "mes": "Abril",
+    "alquiler": 1100,
+    "comida": 550,
+    "servicios": 250,
+    "transporte": 150,
+    "total": 2050
+  },
+  {
+    "mes": "Mayo",
+    "alquiler": 1100,
+    "comida": 550,
+    "servicios": 250,
+    "transporte": 350,
+    "total": 2250
+  },
+  {
+    "mes": "Junio",
+    "alquiler": 1100,
+    "comida": 300,
+    "servicios": 300,
+    "transporte": 500,
+    "total": 2200
+  }
+]
